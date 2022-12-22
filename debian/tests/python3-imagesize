@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -eux
+cp -r test "$AUTOPKGTEST_TMP"
+cd "$AUTOPKGTEST_TMP"
+
+for python in $(py3versions -s); do
+    $python -m unittest discover -v test
+done
